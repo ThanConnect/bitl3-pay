@@ -1,3 +1,4 @@
+import { addLedgerEntry } from '../ledger/store';
 import { createLightningInvoice } from '../lightning/mock-lightning';
 import type { CreateInvoiceRequest } from './types';
 import { findInvoiceById, saveInvoice } from './store';
@@ -25,7 +26,18 @@ export async function createInvoice(input: CreateInvoiceRequest) {
     createdAt: new Date().toISOString()
   };
 
-  return saveInvoice(invoice);
+  const saved = saveInvoice(invoice);
+
+  addLedgerEntry({
+    id: `led_${Date.now()}`,
+    invoiceId: saved.id,
+    type: 'invoice_created',
+    amountSats: saved.amountSats,
+    direction: 'credit',
+    createdAt: new Date().toISOString()
+  });
+
+  return saved;
 }
 
 export async function getInvoice(id: string) {
