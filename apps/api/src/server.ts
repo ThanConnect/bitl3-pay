@@ -1,10 +1,13 @@
 import Fastify from 'fastify';
+import { invoiceRoutes } from './modules/invoices/routes';
 
 const server = Fastify({ logger: true });
 
 server.get('/health', async () => {
   return { ok: true, service: 'bitl3-api' };
 });
+
+server.register(invoiceRoutes);
 
 const port = Number(process.env.PORT || 3000);
 
