@@ -1,0 +1,13 @@
+{
+  "brand": "BitL3 Pay",
+  "payment.title": "จ่ายให้ {{merchantName}}",
+  "payment.status.label": "สถานะ",
+  "payment.status.waiting": "รอการชำระเงิน",
+  "payment.action.openWallet": "เปิดกระเป๋าเงิน",
+  "payment.action.copyInvoice": "คัดลอกใบแจ้งชำระเงิน",
+  "payment.expiresIn": "หมดอายุใน {{time}}",
+  "payment.help.title": "ต้องการความช่วยเหลือ?",
+  "payment.help.body": "คุณสามารถจ่ายด้วยกระเป๋าเงิน Lightning ที่รองรับได้ โดยสแกน QR หรือเปิดกระเป๋าเงินโดยตรง",
+  "payment.advanced.title": "รายละเอียดขั้นสูง",
+  "payment.qr.label": "คิวอาร์โค้ด"
+}
