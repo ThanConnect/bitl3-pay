@@ -1,7 +1,7 @@
 import { addLedgerEntry } from '../ledger/store';
 import { createLightningInvoice } from '../lightning/mock-lightning';
 import type { CreateInvoiceRequest } from './types';
-import { findInvoiceById, saveInvoice } from './store';
+import { findInvoiceById, saveInvoice, settleInvoiceById } from './store';
 
 export async function createInvoice(input: CreateInvoiceRequest) {
   if (!Number.isInteger(input.amountSats) || input.amountSats <= 0) {
@@ -42,4 +42,33 @@ export async function createInvoice(input: CreateInvoiceRequest) {
 
 export async function getInvoice(id: string) {
   return findInvoiceById(id);
+}
+
+export async function settleInvoice(id: string) {
+  const existing = findInvoiceById(id);
+
+  if (!existing) {
+    return undefined;
+  }
+
+  if (existing.status === 'settled') {
+    return existing;
+  }
+
+  const settled = settleInvoiceById(id);
+
+  if (!settled) {
+    return undefined;
+  }
+
+  addLedgerEntry({
+    id: `led_${Date.now()}`,
+    invoiceId: settled.id,
+    type: 'invoice_settled',
+    amountSats: settled.amountSats,
+    direction: 'debit',
+    createdAt: new Date().toISOString()
+  });
+
+  return settled;
 }
