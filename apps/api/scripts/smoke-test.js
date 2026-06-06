@@ -2,13 +2,18 @@ const baseUrl = process.env.BITL3_API_URL || 'http://localhost:3000';
 const apiKey = process.env.BITL3_API_KEY || 'bitl3_test_key';
 
 async function request(path, options = {}) {
+  const headers = {
+    'content-type': 'application/json',
+    ...(options.headers || {})
+  };
+
+  if (options.auth !== false) {
+    headers.authorization = `Bearer ${apiKey}`;
+  }
+
   const response = await fetch(`${baseUrl}${path}`, {
     ...options,
-    headers: {
-      'content-type': 'application/json',
-      authorization: `Bearer ${apiKey}`,
-      ...(options.headers || {})
-    }
+    headers
   });
 
   const text = await response.text();
@@ -22,7 +27,7 @@ async function request(path, options = {}) {
 }
 
 async function main() {
-  const health = await request('/health', { headers: { authorization: undefined } });
+  const health = await request('/health', { auth: false });
   console.log('health:', health);
 
   const invoice = await request('/v1/invoices', {
