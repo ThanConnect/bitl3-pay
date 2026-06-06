@@ -9,5 +9,11 @@
   "payment.help.title": "Need help?",
   "payment.help.body": "You can pay with any supported Lightning wallet. Scan the QR code or open your wallet directly.",
   "payment.advanced.title": "Advanced details",
-  "payment.qr.label": "QR Code"
+  "payment.qr.label": "QR Code",
+  "receipt.title": "Payment complete",
+  "receipt.subtitle": "You paid {{merchantName}}",
+  "receipt.id": "Receipt ID",
+  "receipt.paidAt": "Paid at",
+  "receipt.action.download": "Download Receipt",
+  "receipt.action.share": "Share Receipt"
 }
