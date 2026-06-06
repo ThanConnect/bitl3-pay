@@ -22,8 +22,8 @@ export default function ReceiptPage({ locale = 'en' }) {
         <div className="receipt-success" role="status" aria-live="polite">
           <CheckCircle size={34} aria-hidden="true" />
           <div>
-            <h1 id="receipt-title">Payment complete</h1>
-            <p>You paid {receipt.merchantName}</p>
+            <h1 id="receipt-title">{t('receipt.title')}</h1>
+            <p>{t('receipt.subtitle', { merchantName: receipt.merchantName })}</p>
           </div>
         </div>
 
@@ -34,11 +34,11 @@ export default function ReceiptPage({ locale = 'en' }) {
 
         <dl className="receipt-list">
           <div>
-            <dt>Receipt ID</dt>
+            <dt>{t('receipt.id')}</dt>
             <dd>{receipt.receiptId}</dd>
           </div>
           <div>
-            <dt>Paid at</dt>
+            <dt>{t('receipt.paidAt')}</dt>
             <dd>{receipt.paidAt}</dd>
           </div>
         </dl>
@@ -46,16 +46,16 @@ export default function ReceiptPage({ locale = 'en' }) {
         <div className="actions">
           <button className="primary-button" type="button">
             <Download size={18} aria-hidden="true" />
-            Download Receipt
+            {t('receipt.action.download')}
           </button>
           <button className="secondary-button" type="button">
             <Share2 size={18} aria-hidden="true" />
-            Share Receipt
+            {t('receipt.action.share')}
           </button>
         </div>
 
         <details className="advanced-box">
-          <summary>Advanced details</summary>
+          <summary>{t('payment.advanced.title')}</summary>
           <p className="mono">{receipt.paymentHash}</p>
         </details>
       </section>
