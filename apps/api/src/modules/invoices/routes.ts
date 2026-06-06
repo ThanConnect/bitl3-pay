@@ -1,6 +1,6 @@
 import type { FastifyInstance } from 'fastify';
 import { requireApiKey } from '../auth/middleware';
-import { createInvoice, getInvoice } from './service';
+import { createInvoice, getInvoice, settleInvoice } from './service';
 import type { CreateInvoiceRequest } from './types';
 
 export async function invoiceRoutes(app: FastifyInstance) {
@@ -24,6 +24,20 @@ export async function invoiceRoutes(app: FastifyInstance) {
     { preHandler: requireApiKey },
     async (request, reply) => {
       const invoice = await getInvoice(request.params.id);
+
+      if (!invoice) {
+        return reply.code(404).send({ error: 'invoice not found' });
+      }
+
+      return reply.send(invoice);
+    }
+  );
+
+  app.post<{ Params: { id: string } }>(
+    '/v1/invoices/:id/settle',
+    { preHandler: requireApiKey },
+    async (request, reply) => {
+      const invoice = await settleInvoice(request.params.id);
 
       if (!invoice) {
         return reply.code(404).send({ error: 'invoice not found' });
