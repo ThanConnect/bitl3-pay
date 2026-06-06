@@ -1,0 +1,13 @@
+{
+  "brand": "BitL3 Pay",
+  "payment.title": "Pay {{merchantName}}",
+  "payment.status.label": "Status",
+  "payment.status.waiting": "Waiting for payment",
+  "payment.action.openWallet": "Open Wallet",
+  "payment.action.copyInvoice": "Copy Invoice",
+  "payment.expiresIn": "Expires in {{time}}",
+  "payment.help.title": "Need help?",
+  "payment.help.body": "You can pay with any supported Lightning wallet. Scan the QR code or open your wallet directly.",
+  "payment.advanced.title": "Advanced details",
+  "payment.qr.label": "QR Code"
+}
