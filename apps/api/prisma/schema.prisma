@@ -8,6 +8,66 @@ datasource db {
 }
 
 model Merchant {
-  id   String @id @default(uuid())
-  name String
+  id         String   @id @default(uuid())
+  name       String
+  email      String   @unique
+  apiKeyHash String
+  status     String   @default("active")
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  invoices   Invoice[]
+  webhooks   WebhookEndpoint[]
+}
+
+model Invoice {
+  id               String    @id @default(uuid())
+  merchantId       String
+  amountSats       Int
+  memo             String?
+  status           String    @default("pending")
+  lightningInvoice String
+  paymentHash      String    @unique
+  expiresAt        DateTime
+  settledAt        DateTime?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  merchant         Merchant  @relation(fields: [merchantId], references: [id])
+  ledgerEntries    LedgerEntry[]
+}
+
+model LedgerEntry {
+  id         String   @id @default(uuid())
+  merchantId String
+  invoiceId  String?
+  type       String
+  amountSats Int
+  direction  String
+  createdAt  DateTime @default(now())
+
+  invoice    Invoice? @relation(fields: [invoiceId], references: [id])
+}
+
+model WebhookEndpoint {
+  id         String   @id @default(uuid())
+  merchantId String
+  url        String
+  secret     String
+  active     Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  merchant   Merchant @relation(fields: [merchantId], references: [id])
+}
+
+model WebhookDelivery {
+  id        String   @id @default(uuid())
+  webhookId String
+  eventType String
+  payload   Json
+  status    String   @default("pending")
+  attempts  Int      @default(0)
+  lastError String?
+  createdAt DateTime @default(now())
 }
