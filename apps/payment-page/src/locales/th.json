@@ -9,5 +9,11 @@
   "payment.help.title": "ต้องการความช่วยเหลือ?",
   "payment.help.body": "คุณสามารถจ่ายด้วยกระเป๋าเงิน Lightning ที่รองรับได้ โดยสแกน QR หรือเปิดกระเป๋าเงินโดยตรง",
   "payment.advanced.title": "รายละเอียดขั้นสูง",
-  "payment.qr.label": "คิวอาร์โค้ด"
+  "payment.qr.label": "คิวอาร์โค้ด",
+  "receipt.title": "ชำระเงินสำเร็จ",
+  "receipt.subtitle": "คุณจ่ายให้ {{merchantName}}",
+  "receipt.id": "เลขที่ใบเสร็จ",
+  "receipt.paidAt": "เวลาชำระเงิน",
+  "receipt.action.download": "ดาวน์โหลดใบเสร็จ",
+  "receipt.action.share": "แชร์ใบเสร็จ"
 }
