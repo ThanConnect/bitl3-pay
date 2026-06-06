@@ -21,6 +21,23 @@ export function findInvoiceById(id: string): StoredInvoice | undefined {
   return invoices.get(id);
 }
 
+export function settleInvoiceById(id: string): StoredInvoice | undefined {
+  const invoice = invoices.get(id);
+
+  if (!invoice) {
+    return undefined;
+  }
+
+  const updated: StoredInvoice = {
+    ...invoice,
+    status: 'settled',
+    settledAt: new Date().toISOString()
+  };
+
+  invoices.set(id, updated);
+  return updated;
+}
+
 export function listInvoices(): StoredInvoice[] {
   return Array.from(invoices.values());
 }
