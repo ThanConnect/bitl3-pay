@@ -1,5 +1,6 @@
 import Fastify from 'fastify';
 import { invoiceRoutes } from './modules/invoices/routes';
+import { ledgerRoutes } from './modules/ledger/routes';
 
 const server = Fastify({ logger: true });
 
@@ -8,6 +9,7 @@ server.get('/health', async () => {
 });
 
 server.register(invoiceRoutes);
+server.register(ledgerRoutes);
 
 const port = Number(process.env.PORT || 3000);
 
