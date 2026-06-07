@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react';
+import DashboardPage from './DashboardPage.jsx';
+import DeveloperPage from './DeveloperPage.jsx';
+import DocsPage from './DocsPage.jsx';
 import HomePage from './HomePage.jsx';
 import PaymentPage from './PaymentPage.jsx';
 import ReceiptPage from './ReceiptPage.jsx';
@@ -22,6 +25,18 @@ export default function App() {
 
   if (route === 'receipt') {
     return <ReceiptPage />;
+  }
+
+  if (route === 'dashboard') {
+    return <DashboardPage />;
+  }
+
+  if (route === 'developers') {
+    return <DeveloperPage />;
+  }
+
+  if (route === 'docs') {
+    return <DocsPage />;
   }
 
   return <HomePage />;
