@@ -1,7 +1,7 @@
 :root {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: #102018;
-  background: #f4f7f5;
+  background: radial-gradient(circle at top left, #dff7e8 0, transparent 32rem), #f4f7f5;
 }
 
 * {
@@ -20,50 +20,202 @@ select {
   font: inherit;
 }
 
-.page-shell {
+.site-shell {
   min-height: 100vh;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(18px);
+  background: rgba(244, 247, 245, 0.82);
+  border-bottom: 1px solid rgba(16, 32, 24, 0.08);
+}
+
+.site-nav {
+  width: min(100%, 1120px);
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.brand-link,
+.nav-links a,
+.primary-link-button {
+  color: #102018;
+  text-decoration: none;
+}
+
+.brand-link {
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  font-size: 22px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.nav-links a {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 12px;
+  border-radius: 999px;
+  font-weight: 800;
+  color: #31463c;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+  background: #edf8f1;
+  color: #102018;
+  outline: none;
+}
+
+.page-shell {
+  min-height: calc(100vh - 72px);
   display: grid;
   place-items: center;
-  padding: 24px;
+  padding: 48px 20px;
 }
 
 .payment-card {
   width: min(100%, 440px);
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.94);
   border: 1px solid #dfe7e2;
-  border-radius: 28px;
-  padding: 28px;
-  box-shadow: 0 24px 80px rgba(16, 32, 24, 0.12);
+  border-radius: 32px;
+  padding: 30px;
+  box-shadow: 0 28px 90px rgba(16, 32, 24, 0.14);
+}
+
+.home-shell {
+  align-items: start;
 }
 
 .home-card {
-  width: min(100%, 720px);
+  width: min(100%, 1080px);
+  display: grid;
+  gap: 28px;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: 28px;
+  align-items: center;
+}
+
+.hero-badge {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 34px;
+  align-items: center;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: #edf8f1;
+  color: #174a31;
+  font-weight: 900;
+  font-size: 13px;
+  margin-bottom: 18px;
 }
 
 .home-lede {
-  margin: 18px 0 28px;
+  margin: 20px 0 28px;
   color: #31463c;
   font-size: clamp(18px, 4vw, 24px);
   line-height: 1.35;
+  max-width: 780px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.primary-link-button,
+.secondary-link-button {
+  min-height: 52px;
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 900;
+  padding: 0 18px;
+  text-decoration: none;
+}
+
+.primary-link-button {
+  background: #102018;
+  color: #ffffff;
+}
+
+.secondary-link-button {
+  background: #edf1ef;
+  color: #102018;
+}
+
+.hero-preview {
+  border-radius: 28px;
+  padding: 18px;
+  background: #102018;
+  color: white;
+  box-shadow: 0 28px 80px rgba(16, 32, 24, 0.22);
+}
+
+.hero-preview-inner {
+  border-radius: 22px;
+  background: #ffffff;
+  color: #102018;
+  padding: 20px;
+  display: grid;
+  gap: 16px;
+}
+
+.preview-amount {
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+}
+
+.preview-status {
+  display: inline-flex;
+  width: fit-content;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #edf8f1;
+  color: #174a31;
+  font-weight: 900;
 }
 
 .home-links {
   display: grid;
-  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
 }
 
 .home-link {
-  min-height: 84px;
-  padding: 18px;
+  min-height: 116px;
+  padding: 20px;
   border: 1px solid #dfe7e2;
-  border-radius: 20px;
+  border-radius: 24px;
   background: #f7faf8;
   color: #102018;
   text-decoration: none;
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
 }
 
 .home-link strong,
@@ -72,11 +224,11 @@ select {
 }
 
 .home-link strong {
-  font-size: 18px;
+  font-size: 19px;
 }
 
 .home-link small {
-  margin-top: 4px;
+  margin-top: 6px;
   color: #5f7068;
   line-height: 1.4;
 }
@@ -84,11 +236,25 @@ select {
 .home-link:hover {
   border-color: #9fb5aa;
   background: #edf8f1;
+  transform: translateY(-1px);
 }
 
-.home-link:focus-visible {
+.home-link:focus-visible,
+.primary-link-button:focus-visible,
+.secondary-link-button:focus-visible {
   outline: 3px solid #2f6bff;
   outline-offset: 3px;
+}
+
+.site-footer {
+  width: min(100%, 1120px);
+  margin: 0 auto;
+  padding: 24px 20px 40px;
+  color: #5f7068;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
 .top-row {
@@ -102,7 +268,7 @@ select {
 .eyebrow {
   margin: 0;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 800;
   color: #2f6b4f;
 }
 
@@ -141,8 +307,9 @@ h1 {
 }
 
 .home-card h1 {
-  font-size: clamp(38px, 9vw, 64px);
-  letter-spacing: -0.06em;
+  font-size: clamp(44px, 9vw, 82px);
+  letter-spacing: -0.07em;
+  line-height: 0.96;
 }
 
 .amount-block {
@@ -153,7 +320,7 @@ h1 {
 
 .local-amount {
   font-size: 44px;
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: -0.04em;
 }
 
@@ -188,7 +355,7 @@ h1 {
   place-items: center;
   gap: 10px;
   color: #4d6258;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .qr-grid {
@@ -215,7 +382,7 @@ h1 {
   justify-content: center;
   gap: 10px;
   cursor: pointer;
-  font-weight: 800;
+  font-weight: 900;
 }
 
 .primary-button {
@@ -259,15 +426,45 @@ summary {
   line-height: 1.5;
 }
 
-.mono {
+.mono,
+.code-block {
   overflow-wrap: anywhere;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 13px;
 }
 
+.code-block {
+  margin: 24px 0;
+  padding: 18px;
+  border-radius: 18px;
+  background: #102018;
+  color: #dff7e8;
+  overflow-x: auto;
+}
+
+@media (max-width: 760px) {
+  .site-nav {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .nav-links {
+    justify-content: flex-start;
+  }
+
+  .hero-grid,
+  .home-links {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-preview {
+    order: -1;
+  }
+}
+
 @media (max-width: 420px) {
   .page-shell {
-    padding: 12px;
+    padding: 18px 12px;
   }
 
   .payment-card {
@@ -276,11 +473,11 @@ summary {
   }
 
   .home-card h1 {
-    font-size: 38px;
+    font-size: 42px;
   }
 
   .home-link {
-    min-height: 76px;
+    min-height: 90px;
     padding: 14px;
   }
 
