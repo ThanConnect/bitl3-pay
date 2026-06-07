@@ -36,6 +36,61 @@ select {
   box-shadow: 0 24px 80px rgba(16, 32, 24, 0.12);
 }
 
+.home-card {
+  width: min(100%, 720px);
+}
+
+.home-lede {
+  margin: 18px 0 28px;
+  color: #31463c;
+  font-size: clamp(18px, 4vw, 24px);
+  line-height: 1.35;
+}
+
+.home-links {
+  display: grid;
+  gap: 14px;
+}
+
+.home-link {
+  min-height: 84px;
+  padding: 18px;
+  border: 1px solid #dfe7e2;
+  border-radius: 20px;
+  background: #f7faf8;
+  color: #102018;
+  text-decoration: none;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 14px;
+}
+
+.home-link strong,
+.home-link small {
+  display: block;
+}
+
+.home-link strong {
+  font-size: 18px;
+}
+
+.home-link small {
+  margin-top: 4px;
+  color: #5f7068;
+  line-height: 1.4;
+}
+
+.home-link:hover {
+  border-color: #9fb5aa;
+  background: #edf8f1;
+}
+
+.home-link:focus-visible {
+  outline: 3px solid #2f6bff;
+  outline-offset: 3px;
+}
+
 .top-row {
   display: flex;
   align-items: center;
@@ -83,6 +138,11 @@ h1 {
   margin: 0;
   font-size: clamp(28px, 8vw, 40px);
   line-height: 1.05;
+}
+
+.home-card h1 {
+  font-size: clamp(38px, 9vw, 64px);
+  letter-spacing: -0.06em;
 }
 
 .amount-block {
@@ -213,6 +273,15 @@ summary {
   .payment-card {
     padding: 22px;
     border-radius: 22px;
+  }
+
+  .home-card h1 {
+    font-size: 38px;
+  }
+
+  .home-link {
+    min-height: 76px;
+    padding: 14px;
   }
 
   .local-amount {
